@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<h1>{{ computer.name }}</h1>
+
+<div class="card">
+    <p><strong>Specs:</strong> {{ computer.specs }}</p>
+    <p><strong>Software:</strong> {{ computer.software }}</p>
+</div>
+
+<h2>Repair History</h2>
+{% for repair in computer.repairs %}
+<div class="card">
+    <p><strong>Date:</strong> {{ repair.date.strftime('%Y-%m-%d %H:%M') }}</p>
+    <p>{{ repair.detail }}</p>
+</div>
+{% else %}
+<p>No repair records yet.</p>
+{% endfor %}
+
+<h3>Add Repair Record</h3>
+<form method="post" action="{{ url_for('add_repair', computer_id=computer.id) }}">
+    <textarea name="detail" placeholder="Describe the repair..." required></textarea>
+    <button type="submit">Add Repair</button>
+</form>
+{% endblock %}

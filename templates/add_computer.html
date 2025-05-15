@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<h1>Add New Computer</h1>
+<form method="post">
+    <label>Name</label>
+    <input type="text" name="name" required>
+
+    <label>Specs</label>
+    <textarea name="specs" required></textarea>
+
+    <label>Software</label>
+    <textarea name="software"></textarea>
+
+    <button type="submit">Add Computer</button>
+</form>
+{% endblock %}
